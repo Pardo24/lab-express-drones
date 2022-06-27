@@ -42,7 +42,10 @@ const {name, propellers, maxSpeed} = req.body
 });
 
 router.post('/drones/:id/delete', (req, res, next) => {
-
+  const {id} =req.params
+Drones.findByIdAndDelete(id)
+.then(()=> res.redirect("/drones"))
+.catch((err)=> console.log(err))
 });
 
 module.exports = router;
